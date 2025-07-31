@@ -1,1 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogewifcar - The Adventures Of Dogewifcar</title>
+    <meta name="description" content="Join Doge on his epic car adventures - Much vroom, such speed, very adventure!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a2e, #16213e, #1e3a8a, #22c55e, #eab308);
+            background-size: 400% 400%;
+            animation: chameleonShift 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes chameleonShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 25% 75%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 75% 25%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid #22c55e;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 5px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #22c55e;
+        }
+
+        .doge-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #22c55e, #16a34a, #eab308);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 14px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border: 2px solid #a855f7;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+            position: relative;
+            animation: colorShift 8s ease infinite;
+        }
+
+        @keyframes colorShift {
+            0% { background: linear-gradient(45deg, #22c55e, #16a34a); border-color: #a855f7; }
+            25% { background: linear-gradient(45deg, #3b82f6, #1d4ed8); border-color: #eab308; }
+            50% { background: linear-gradient(45deg, #a855f7, #7c3aed); border-color: #ef4444; }
+            75% { background: linear-gradient(45deg, #eab308, #ca8a04); border-color: #22c55e; }
+            100% { background: linear-gradient(45deg, #22c55e, #16a34a); border-color: #a855f7; }
+        }
+
+        .doge-icon::after {
+            content: '🐕';
+            position: absolute;
+            right: -8px;
+            top: -5px;
+            font-size: 18px;
+            z-index: 2;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            border-color: #a855f7;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #22c55e;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            color: #a855f7;
+            font-weight: bold;
+        }
+
+        /* Doge Car Animation */
+        .doge-car-container {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .doge-car {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            position: relative;
+            border: 4px solid #a855f7;
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+            animation: colorShift 8s ease infinite;
+        }
+
+        .doge-car::before {
+            content: "🐕";
+            position: absolute;
+            font-size: 4em;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .car-orbit {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 330px;
+            height: 330px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: spin 6s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .car-orbit::after {
+            content: "🚗";
+            position: absolute;
+            font-size: 2.5em;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: spin 6s linear infinite reverse;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .meme-text {
+            text-align: center;
+            font-size: 1.4em;
+            color: #eab308;
+            font-weight: bold;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid #22c55e;
+            border-radius: 25px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+            line-height: 1.8;
+            transition: transform 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-section h2 {
+            color: #22c55e;
+            margin: 30px 0 15px 0;
+            font-size: 2.2em;
+            border-bottom: 2px solid #22c55e;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section h3 {
+            color: #a855f7;
+            margin: 25px 0 10px 0;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            color: #E8F5E8;
+            font-size: 1.1em;
+        }
+
+        .chapter-icon {
+            font-size: 1.5em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Special Boxes */
+        .wow-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(102, 255, 153, 0.2));
+            border: 2px solid #22c55e;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .adventure-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(199, 125, 255, 0.2));
+            border: 2px solid #a855f7;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tokenomics-box {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.3), rgba(255, 193, 7, 0.2));
+            border: 2px solid #eab308;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wow-box::before, .adventure-box::before, .tokenomics-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .wow-box strong {
+            color: #22c55e;
+            font-size: 1.2em;
+        }
+
+        .adventure-box strong {
+            color: #a855f7;
+            font-size: 1.2em;
+        }
+
+        .tokenomics-box strong {
+            color: #eab308;
+            font-size: 1.2em;
+        }
+
+        /* Token Info Grid */
+        .token-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .token-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #22c55e;
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .token-card:hover {
+            transform: translateY(-5px);
+            border-color: #a855f7;
+        }
+
+        .token-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #22c55e;
+        }
+
+        .contract-address {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #eab308;
+            padding: 20px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            word-break: break-all;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .contract-address:hover {
+            background: rgba(234, 179, 8, 0.2);
+            border-color: #22c55e;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+            font-size: 1.1em;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(45deg, #a855f7, #7c3aed);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        .cta-button.secondary:hover {
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 3px solid #22c55e;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: #22c55e;
+        }
+
+        .disclaimer {
+            background: rgba(168, 85, 247, 0.15);
+            border: 2px solid #a855f7;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #a855f7;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .copyright {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .community-message {
+            color: #22c55e;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .main-content {
+                padding: 180px 1rem 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .main-content {
+                padding-top: 200px;
+            }
+
+            .doge-car {
+                width: 250px;
+                height: 250px;
+            }
+
+            .car-orbit {
+                width: 280px;
+                height: 280px;
+                top: -15px;
+                left: -15px;
+            }
+
+            .token-info {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Wow text animation */
+        .wow-text {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2em;
+            font-weight: bold;
+            color: #eab308;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: wowFloat 3s ease-out forwards;
+            z-index: 999;
+        }
+
+        @keyframes wowFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <div class="doge-icon">DOGE</div>
+                DOGEWIFCAR
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active">🏠 HOME</a>
+                <a href="#adventure">🚗 ADVENTURE</a>
+                <a href="#tokenomics">💎 TOKENOMICS</a>
+                <a href="#community">🌟 COMMUNITY</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section id="home">
+            <h1 class="page-title fade-in">
+                <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #22c55e, #16a34a); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: white; border: 3px solid #a855f7; position: relative; animation: colorShift 8s ease infinite;">
+                    DOGE
+                    <span style="position: absolute; right: -12px; top: -8px; font-size: 24px;">🐕</span>
+                </div>
+                DOGEWIFCAR
+            </h1>
+            <p class="page-subtitle fade-in">🚗 The Adventures of Dogewifcar</p>
+
+            <div class="doge-car-container fade-in">
+                <div class="doge-car">
+                    <div class="car-orbit"></div>
+                </div>
+            </div>
+
+            <p class="meme-text fade-in">Such Speed! Much Vroom! Very Adventure!</p>
+
+            <div class="cta-buttons fade-in">
+                <a href="#tokenomics" class="cta-button">🚀 Join Adventure</a>
+                <a href="#adventure" class="cta-button secondary">📖 Read Story</a>
+            </div>
+        </section>
+
+        <section id="adventure" class="content-section fade-in">
+            <h2>🚗 The Epic Journey Begins</h2>
+            
+            <div class="wow-box">
+                <strong>🐕 MUCH WOW! SUCH ADVENTURE AWAITS!</strong><br><br>
+                <strong>Join Doge on the most epic road trip in crypto history!</strong>
+            </div>
+
+            <h3><span class="chapter-icon">🚗</span>Chapter 1: The Discovery</h3>
+            <p>In a world where memes reign supreme, one Shiba Inu stands out from the rest. Meet Doge, the internet's favorite dog, known for his iconic "such wow" and "very amaze" captions. But this time, Doge isn't just sitting around being cute—he's hitting the road in style! It all started when Doge found a car. Not just any car, but a sleek, shiny vehicle that promised endless adventures. With a wag of his tail and a sparkle in his eye, Doge hopped into the driver's seat, ready to explore the world.</p>
+
+            <h3><span class="chapter-icon">🌅</span>Chapter 2: The Great Escape</h3>
+            <p>One sunny morning, Doge woke up with a brilliant idea. "I need an adventure," he thought, "I'm going for a drive." He grabbed his sunglasses, hopped into his shiny new car, and revved the engine. With a bark of excitement, Doge sped off down the driveway, leaving a trail of dust and "much wow" behind. The open road called to him, promising adventures beyond his wildest dreams.</p>
+
+            <h3><span class="chapter-icon">🛣️</span>Chapter 3: The Highway of Dreams</h3>
+            <p>As Doge cruised down the highway, he couldn't help but marvel at the sights. The wind in his fur and the open road ahead filled him with pure joy. "Cruising speed," he thought, "It's a very nice drive." Along the way, Doge encountered various characters—friendly truckers, fellow meme enthusiasts, and even some crypto traders—each adding to the hilarity and wonder of his journey.</p>
+
+            <h3><span class="chapter-icon">⛽</span>Chapter 4: The Legendary Pit Stop</h3>
+            <p>Doge's car started to sputter, so he pulled into a gas station. As he filled up the tank, a squirrel approached, eyeing Doge's snacks. "Much hungry?" Doge asked, tossing the squirrel a treat. The grateful squirrel offered to clean Doge's windshield in return. "Very clean," Doge admired, "such teamwork." This moment of kindness would become legendary in the crypto community.</p>
+
+            <h3><span class="chapter-icon">🎭</span>Chapter 5: The Meme Revolution</h3>
+            <p>Of course, no Doge adventure would be complete without memes. From "much vroom" to "very fast," the internet quickly embraced Doge's new persona as the ultimate driving dog. Memes featuring Doge in his car spread like wildfire across social media, bringing joy and laughter to millions. The "dogewifcar" phenomenon was born, capturing hearts and creating a community united by humor and adventure.</p>
+
+            <div class="adventure-box">
+                <strong>🎬 THE ADVENTURE CONTINUES...</strong><br><br>
+                <strong>This is just the beginning of Doge's epic journey. Every day brings new roads to explore, new friends to meet, and new memes to create. Buckle up and join the ride!</strong>
+            </div>
+        </section>
+
+        <section id="tokenomics" class="content-section fade-in">
+            <h2>💎 TOKENOMICS</h2>
+            
+            <div class="tokenomics-box">
+                <strong>🚀 DOGEWIFCAR TOKEN SPECIFICATIONS</strong><br><br>
+                <strong>Built for the community, powered by memes, driven by adventure!</strong>
+            </div>
+
+            <div class="token-info">
+                <div class="token-card">
+                    <h3>💎 Total Supply</h3>
+                    <p style="font-size: 2em; margin: 20px 0; color: #eab308;">1,000,000,000,000</p>
+                    <p>One trillion tokens for maximum meme potential!</p>
+                </div>
+                <div class="token-card">
+                    <h3>🔥 Distribution</h3>
+                    <p>✅ Fair launch with no team allocation</p>
+                    <p>✅ Community-driven project</p>
+                    <p>✅ Liquidity locked forever</p>
+                    <p>✅ No hidden surprises</p>
+                </div>
+                <div class="token-card">
+                    <h3>🎯 Utility</h3>
+                    <p>🎭 Meme power activated</p>
+                    <p>🗳️ Community governance</p>
+                    <p>🚗 Adventure fund contributions</p>
+                    <p>🌟 Exclusive community access</p>
+                </div>
+            </div>
+            
+            <div class="contract-address" onclick="copyContract()">
+                <strong>📋 Contract Address:</strong><br>
+                0x0073c4DBA04d32896c433DEB75Dd39eFe63baeb9
+                <br><small>👆 Click to copy to clipboard</small>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="community" class="footer">
+        <div class="footer-links">
+            <a href="#home">🏠 Home</a>
+            <a href="#adventure">🚗 Adventure</a>
+            <a href="#tokenomics">💎 Tokenomics</a>
+            <a href="#community">🌟 Community</a>
+            <a href="#terms">📜 Terms</a>
+        </div>
+        
+        <div class="disclaimer">
+            🐕 DOGEWIFCAR is for entertainment only. Much risk, such volatility. Not financial advice. 18+ only.
+        </div>
+        
+        <div class="copyright">
+            © 2025 Dogewifcar. All rights reserved.
+        </div>
+        
+        <div class="community-message">
+            Built with 🚗 for doge and car enthusiasts everywhere
+        </div>
+        
+        <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">
+            <strong>Much Update:</strong> July 31, 2025<br>
+            <em>Such website. Very professional. Wow.</em>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive wow text on clicks
+        document.addEventListener('click', function(e) {
+            if (Math.random() < 0.3) {
+                createWowText(e.clientX, e.clientY);
+            }
+        });
+
+        function createWowText(x, y) {
+            const phrases = ['Such Wow!', 'Much Click!', 'Very Fast!', 'So Speed!', 'Much Adventure!', 'Very Vroom!', 'Such Car!'];
+            const phrase = phrases[Math.floor(Math.random() * phrases.length)];
+            
+            const wowElement = document.createElement('div');
+            wowElement.className = 'wow-text';
+            wowElement.textContent = phrase;
+            wowElement.style.left = x + 'px';
+            wowElement.style.top = y + 'px';
+            
+            document.body.appendChild(wowElement);
+            
+            setTimeout(() => {
+                wowElement.remove();
+            }, 3000);
+        }
+
+        function copyContract() {
+            const contractAddress = '0x0073c4DBA04d32896c433DEB75Dd39eFe63baeb9';
+            navigator.clipboard.writeText(contractAddress).then(function() {
+                alert('Contract address copied to clipboard! Much convenient! Such copy!');
+            });
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Update active nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
