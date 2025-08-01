@@ -874,6 +874,33 @@
 
         // Initialize auto-replacement when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Test if the main circle images load
+            const dogeImg = new Image();
+            dogeImg.onload = function() {
+                console.log('✅ Doge circle image loaded successfully');
+                // Hide emoji fallback
+                document.querySelector('.doge-car::before') && (document.querySelector('.doge-car').style.setProperty('--show-emoji', '0'));
+            };
+            dogeImg.onerror = function() {
+                console.log('❌ Doge circle image failed to load - showing emoji fallback');
+                // Show emoji fallback
+                const dogeCircle = document.querySelector('.doge-car');
+                if (dogeCircle) {
+                    dogeCircle.querySelector('::before') || (dogeCircle.style.setProperty('--show-emoji', '1'));
+                }
+            };
+            dogeImg.src = './images/images/destinations/doge.jpg';
+
+            const carImg = new Image();
+            carImg.onload = function() {
+                console.log('✅ Car orbit image loaded successfully');
+            };
+            carImg.onerror = function() {
+                console.log('❌ Car orbit image failed to load - showing emoji fallback');
+            };
+            carImg.src = './images/images/destinations/car.jpg';
+
+            // Also run the emoji replacement for other parts of the site
             setTimeout(() => {
                 autoReplaceEmojis();
             }, 1000);
