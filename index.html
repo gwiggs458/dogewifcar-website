@@ -1,31 +1,4 @@
-// Enhanced wow text function
-        function createWowText(x, y, customText) {
-            const phrases = customText ? [customText] : ['Such Wow!', 'Much Click!', 'Very Fast!', 'So Speed!', 'Much Adventure!', 'Very Vroom!', 'Such Car!'];
-            const phrase = phrases[Math.floor(Math.random() * phrases.length)];
-            
-            const wowElement = document.createElement('div');
-            wowElement.className = 'wow-text';
-            wowElement.textContent = phrase;
-            wowElement.style.left = x + 'px';
-            wowElement.style.top = y + 'px';
-            
-            document.body.appendChild(wowElement);
-            
-            setTimeout(() => {
-                wowElement.remove();
-            }, 3000);
-        }            .image-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1rem;
-            }
-
-            .gallery-upload {
-                padding: 1.5rem;
-            }
-
-            .gallery-item img {
-                height: 200px;
-            }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -745,7 +718,6 @@
     <script>
         // Image replacement system using actual image files
         const imageReplacements = {
-            // Define which emojis to replace with actual images from your folder
             '🐕': './images/images/destinations/doge.jpg',
             '🚗': './images/images/destinations/car.jpg', 
             '⛽': './images/images/destinations/gas-station.jpg',
@@ -754,10 +726,8 @@
             '🎭': './images/images/destinations/meme.jpg'
         };
 
-        // Track which replacements are active
         let activeReplacements = {};
 
-        // Debug function to test image paths
         function testImagePaths() {
             console.log('Testing image paths...');
             Object.keys(imageReplacements).forEach(emoji => {
@@ -772,238 +742,49 @@
             });
         }
 
-        function createImageReplacementUI() {
-            const replacementUI = document.createElement('div');
-            replacementUI.id = 'image-replacement-ui';
-            replacementUI.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: rgba(0, 0, 0, 0.95);
-                border: 2px solid #22c55e;
-                border-radius: 15px;
-                padding: 20px;
-                z-index: 1001;
-                max-width: 350px;
-                max-height: 80vh;
-                overflow-y: auto;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-            `;
-
-            replacementUI.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h3 style="color: #22c55e; margin: 0; font-size: 1.2em;">🖼️ Replace Icons</h3>
-                    <button onclick="toggleReplacementUI()" style="background: #ef4444; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer;">×</button>
-                </div>
-                <p style="color: #E8F5E8; font-size: 0.9em; margin-bottom: 20px;">Toggle emoji replacements with images from your destinations folder</p>
-                
-                <div id="replacement-options">
-                    ${Object.keys(imageReplacements).map(emoji => `
-                        <div style="margin-bottom: 15px; padding: 15px; background: rgba(168, 85, 247, 0.1); border: 1px solid #a855f7; border-radius: 10px;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                                <div style="display: flex; align-items: center;">
-                                    <span style="font-size: 1.5em; margin-right: 10px;">${emoji}</span>
-                                    <span style="color: #a855f7; font-weight: bold; font-size: 0.9em;">${imageReplacements[emoji].split('/').pop()}</span>
-                                </div>
-                                <label style="position: relative; display: inline-block; width: 50px; height: 24px;">
-                                    <input type="checkbox" id="toggle-${emoji}" onchange="toggleImageReplacement('${emoji}', this.checked)" style="opacity: 0; width: 0; height: 0;">
-                                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px;"></span>
-                                    <span style="position: absolute; content: ''; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%;"></span>
-                                </label>
-                            </div>
-                            <div id="preview-${emoji}" style="margin-top: 10px; display: none; text-align: center;">
-                                <img style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 2px solid #22c55e;">
-                                <p style="color: #22c55e; font-size: 0.8em; margin: 5px 0 0 0;">✅ Active Replacement</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-                
-                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #a855f7;">
-                    <button onclick="testImagePaths()" style="background: linear-gradient(45deg, #3b82f6, #1d4ed8); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-bottom: 10px;">🔍 Test Image Paths</button>
-                    <button onclick="applyAllReplacements()" style="background: linear-gradient(45deg, #eab308, #ca8a04); color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; margin-bottom: 10px;">🚀 Apply Active Replacements</button>
-                    <button onclick="resetAllReplacements()" style="background: linear-gradient(45deg, #6b7280, #4b5563); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;">🔄 Reset to Emojis</button>
-                </div>
-                
-                <div style="margin-top: 15px; padding: 10px; background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; border-radius: 8px;">
-                    <p style="color: #22c55e; font-size: 0.8em; margin: 0; text-align: center;">
-                        <strong>📁 Upload images to:</strong><br>
-                        <code>images/images/destinations/</code><br>
-                        doge.jpg, car.jpg, gas-station.jpg, sunrise.jpg, road.jpg, meme.jpg<br><br>
-                        <strong>🔍 Use "Test Image Paths" to debug!</strong><br>
-                        Check browser console (F12) for detailed results
-                    </p>
-                </div>
-            `;
-
-            document.body.appendChild(replacementUI);
-
-            // Add custom CSS for toggle switches
-            const style = document.createElement('style');
-            style.textContent = `
-                input:checked + span {
-                    background-color: #22c55e !important;
-                }
-                input:checked + span + span {
-                    transform: translateX(26px) !important;
-                }
-            `;
-            document.head.appendChild(style);
-
-            // Add toggle button
-            const toggleBtn = document.createElement('button');
-            toggleBtn.id = 'toggle-replacement-btn';
-            toggleBtn.style.cssText = `
-                position: fixed;
-                top: 120px;
-                right: 20px;
-                background: linear-gradient(45deg, #22c55e, #16a34a);
-                color: white;
-                border: none;
-                border-radius: 50%;
-                width: 60px;
-                height: 60px;
-                cursor: pointer;
-                font-size: 1.5em;
-                z-index: 1002;
-                box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
-                transition: all 0.3s ease;
-            `;
-            toggleBtn.innerHTML = '🖼️';
-            toggleBtn.onclick = toggleReplacementUI;
-            toggleBtn.onmouseenter = function() {
-                this.style.transform = 'scale(1.1)';
-            };
-            toggleBtn.onmouseleave = function() {
-                this.style.transform = 'scale(1)';
-            };
-            document.body.appendChild(toggleBtn);
-        }
-
-        function toggleReplacementUI() {
-            const ui = document.getElementById('image-replacement-ui');
-            const isVisible = ui.style.transform === 'translateX(0%)';
-            ui.style.transform = isVisible ? 'translateX(100%)' : 'translateX(0%)';
-        }
-
-        function toggleImageReplacement(emoji, isEnabled) {
-            if (isEnabled) {
-                // Check if image exists before enabling
+        function autoReplaceEmojis() {
+            console.log('Checking for available images to replace emojis...');
+            
+            Object.keys(imageReplacements).forEach(emoji => {
                 const img = new Image();
                 img.onload = function() {
-                    console.log(`Image loaded successfully: ${imageReplacements[emoji]}`);
+                    console.log(`✅ Auto-replacing ${emoji} with ${imageReplacements[emoji]}`);
                     activeReplacements[emoji] = imageReplacements[emoji];
-                    showImagePreview(emoji, imageReplacements[emoji]);
-                    createWowText(window.innerWidth / 2, 100, `${emoji} Ready! Such Image!`);
+                    replaceEmojiInDOM(emoji, imageReplacements[emoji]);
                 };
                 img.onerror = function() {
-                    console.log(`Image failed to load: ${imageReplacements[emoji]}`);
-                    // Reset toggle if image doesn't exist
-                    document.getElementById(`toggle-${emoji}`).checked = false;
-                    createWowText(window.innerWidth / 2, 100, `${emoji} Not Found! Upload image first!`);
-                    
-                    // Try alternative paths
-                    const altPaths = [
-                        `images/destinations/${imageReplacements[emoji].split('/').pop()}`,
-                        `./images/destinations/${imageReplacements[emoji].split('/').pop()}`,
-                        `/images/images/destinations/${imageReplacements[emoji].split('/').pop()}`,
-                        `https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/${imageReplacements[emoji].split('/').pop()}`
-                    ];
-                    
-                    alert(`Image not found: ${imageReplacements[emoji]}\n\nTried paths:\n${altPaths.join('\n')}\n\nPlease check:\n1. File exists in GitHub repo\n2. Correct filename and extension\n3. Wait for GitHub Pages to update (can take a few minutes)`);
+                    console.log(`❌ ${emoji} image not found: ${imageReplacements[emoji]}`);
                 };
                 img.src = imageReplacements[emoji];
-            } else {
-                delete activeReplacements[emoji];
-                hideImagePreview(emoji);
-                createWowText(window.innerWidth / 2, 100, `${emoji} Disabled! Such Remove!`);
-            }
+            });
         }
 
-        function showImagePreview(emoji, imagePath) {
-            const preview = document.getElementById(`preview-${emoji}`);
-            const img = preview.querySelector('img');
-            img.src = imagePath;
-            preview.style.display = 'block';
-        }
-
-        function hideImagePreview(emoji) {
-            const preview = document.getElementById(`preview-${emoji}`);
-            preview.style.display = 'none';
-        }
-
-        function applyAllReplacements() {
-            if (Object.keys(activeReplacements).length === 0) {
-                createWowText(window.innerWidth / 2, 200, 'No images selected! Much empty!');
-                return;
-            }
-
-            let replacedCount = 0;
-            
-            // Find all text nodes and elements that contain the emojis
+        function replaceEmojiInDOM(emoji, imagePath) {
             function replaceInElement(element) {
-                // Skip script and style elements
                 if (element.tagName === 'SCRIPT' || element.tagName === 'STYLE') return;
                 
                 if (element.nodeType === Node.TEXT_NODE) {
                     let text = element.textContent;
-                    let hasReplacement = false;
-                    
-                    Object.keys(activeReplacements).forEach(emoji => {
-                        if (text.includes(emoji)) {
-                            // Create a new element to hold the mixed content
-                            const newContent = text.split(emoji).join(`<img src="${activeReplacements[emoji]}" style="width: 1.2em; height: 1.2em; object-fit: cover; border-radius: 3px; vertical-align: middle; margin: 0 2px;" alt="${emoji}" onerror="this.style.display='none'; this.nextSibling.textContent='${emoji}';">`);
-                            
-                            if (newContent !== text) {
-                                hasReplacement = true;
-                                const wrapper = document.createElement('span');
-                                wrapper.innerHTML = newContent;
-                                element.parentNode.replaceChild(wrapper, element);
-                                replacedCount++;
-                            }
+                    if (text.includes(emoji)) {
+                        const newContent = text.split(emoji).join(`<img src="${imagePath}" style="width: 1.2em; height: 1.2em; object-fit: cover; border-radius: 3px; vertical-align: middle; margin: 0 2px;" alt="${emoji}" onerror="this.style.display='none';">`);
+                        
+                        if (newContent !== text) {
+                            const wrapper = document.createElement('span');
+                            wrapper.innerHTML = newContent;
+                            element.parentNode.replaceChild(wrapper, element);
                         }
-                    });
+                    }
                 } else {
-                    // Recursively process child nodes
                     const children = Array.from(element.childNodes);
                     children.forEach(child => replaceInElement(child));
                 }
             }
-
-            // Apply replacements to the entire document
+            
             replaceInElement(document.body);
-            
-            createWowText(window.innerWidth / 2, 200, `Such Replace! ${replacedCount} Icons Updated!`);
-            toggleReplacementUI();
         }
 
-        function resetAllReplacements() {
-            // Reload the page to reset all replacements
-            if (confirm('This will reload the page and reset all icon replacements. Continue?')) {
-                location.reload();
-            }
-        }
-
-        // Initialize the replacement UI when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                createImageReplacementUI();
-            }, 1000);
-        });
-
-        // Interactive wow text on clicks
-        document.addEventListener('click', function(e) {
-            // Don't trigger on gallery interactions
-            if (e.target.closest('.gallery-container')) return;
-            
-            if (Math.random() < 0.3) {
-                createWowText(e.clientX, e.clientY);
-            }
-        });
-
-        function createWowText(x, y) {
-            const phrases = ['Such Wow!', 'Much Click!', 'Very Fast!', 'So Speed!', 'Much Adventure!', 'Very Vroom!', 'Such Car!'];
+        function createWowText(x, y, customText) {
+            const phrases = customText ? [customText] : ['Such Wow!', 'Much Click!', 'Very Fast!', 'So Speed!', 'Much Adventure!', 'Very Vroom!', 'Such Car!'];
             const phrase = phrases[Math.floor(Math.random() * phrases.length)];
             
             const wowElement = document.createElement('div');
@@ -1025,6 +806,13 @@
                 alert('Contract address copied to clipboard! Much convenient! Such copy!');
             });
         }
+
+        // Interactive wow text on clicks
+        document.addEventListener('click', function(e) {
+            if (Math.random() < 0.3) {
+                createWowText(e.clientX, e.clientY);
+            }
+        });
 
         // Smooth scrolling for navigation
         document.querySelectorAll('nav a').forEach(anchor => {
@@ -1082,6 +870,13 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        // Initialize auto-replacement when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                autoReplaceEmojis();
+            }, 1000);
         });
     </script>
 </body>
