@@ -716,14 +716,14 @@
     </footer>
 
     <script>
-        // Image replacement system using actual image files
+        // Image replacement system using GitHub repository paths
         const imageReplacements = {
-            '🐕': './images/images/destinations/doge.jpg',
-            '🚗': './images/images/destinations/car.jpg', 
-            '⛽': './images/images/destinations/gas-station.jpg',
-            '🌅': './images/images/destinations/sunrise.jpg',
-            '🛣️': './images/images/destinations/road.jpg',
-            '🎭': './images/images/destinations/meme.jpg'
+            '🐕': 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/doge.jpg',
+            '🚗': 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/car.jpg', 
+            '⛽': 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/gas-station.jpg',
+            '🌅': 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/sunrise.jpg',
+            '🛣️': 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/road.jpg',
+            '🎭': 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/meme.jpg'
         };
 
         let activeReplacements = {};
@@ -874,31 +874,69 @@
 
         // Initialize auto-replacement when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Test if the main circle images load
-            const dogeImg = new Image();
-            dogeImg.onload = function() {
-                console.log('✅ Doge circle image loaded successfully');
-                // Hide emoji fallback
-                document.querySelector('.doge-car::before') && (document.querySelector('.doge-car').style.setProperty('--show-emoji', '0'));
-            };
-            dogeImg.onerror = function() {
-                console.log('❌ Doge circle image failed to load - showing emoji fallback');
-                // Show emoji fallback
-                const dogeCircle = document.querySelector('.doge-car');
-                if (dogeCircle) {
-                    dogeCircle.querySelector('::before') || (dogeCircle.style.setProperty('--show-emoji', '1'));
-                }
-            };
-            dogeImg.src = './images/images/destinations/doge.jpg';
+            // GitHub Pages image path
+            const dogeImagePath = 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/doge.jpg';
+            const carImagePath = 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/car.jpg';
+            
+            // Fix BOTH circles - main logo circle AND header icon circle
+            
+            // 1. Fix the main logo circle
+            const dogeCircle = document.querySelector('.doge-car');
+            if (dogeCircle) {
+                const img = new Image();
+                img.onload = function() {
+                    console.log('✅ Doge image loaded from GitHub, applying to MAIN circle');
+                    dogeCircle.style.backgroundImage = `url('${dogeImagePath}')`;
+                    dogeCircle.style.backgroundSize = 'cover';
+                    dogeCircle.style.backgroundPosition = 'center';
+                    dogeCircle.style.backgroundRepeat = 'no-repeat';
+                    // Hide the emoji fallback
+                    const fallback = dogeCircle.querySelector('::before');
+                    if (fallback) fallback.style.display = 'none';
+                };
+                img.onerror = function() {
+                    console.log('❌ Doge image failed to load from GitHub in main circle');
+                    console.log('Tried path:', dogeImagePath);
+                };
+                img.src = dogeImagePath;
+            }
 
-            const carImg = new Image();
-            carImg.onload = function() {
-                console.log('✅ Car orbit image loaded successfully');
-            };
-            carImg.onerror = function() {
-                console.log('❌ Car orbit image failed to load - showing emoji fallback');
-            };
-            carImg.src = './images/images/destinations/car.jpg';
+            // 2. Fix the header icon circle
+            const headerIcon = document.querySelector('.doge-icon');
+            if (headerIcon) {
+                const img2 = new Image();
+                img2.onload = function() {
+                    console.log('✅ Doge image loaded from GitHub, applying to HEADER circle');
+                    headerIcon.style.backgroundImage = `url('${dogeImagePath}')`;
+                    headerIcon.style.backgroundSize = 'cover';
+                    headerIcon.style.backgroundPosition = 'center';
+                    headerIcon.style.backgroundRepeat = 'no-repeat';
+                    // Hide the emoji that's positioned wrong
+                    const emoji = headerIcon.querySelector('::after');
+                    if (emoji) emoji.style.display = 'none';
+                };
+                img2.onerror = function() {
+                    console.log('❌ Doge image failed to load from GitHub in header circle');
+                    console.log('Tried path:', dogeImagePath);
+                };
+                img2.src = dogeImagePath;
+            }
+
+            // 3. Fix the orbiting car
+            const carOrbit = document.querySelector('.car-orbit');
+            if (carOrbit) {
+                const img3 = new Image();
+                img3.onload = function() {
+                    console.log('✅ Car image loaded from GitHub for orbit');
+                    // Apply car image to the orbiting element via CSS variable
+                    document.documentElement.style.setProperty('--car-image', `url('${carImagePath}')`);
+                };
+                img3.onerror = function() {
+                    console.log('❌ Car orbit image failed to load from GitHub');
+                    console.log('Tried path:', carImagePath);
+                };
+                img3.src = carImagePath;
+            }
 
             // Also run the emoji replacement for other parts of the site
             setTimeout(() => {
