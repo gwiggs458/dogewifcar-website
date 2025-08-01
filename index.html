@@ -872,76 +872,63 @@
             });
         });
 
-        // Initialize auto-replacement when page loads
+        // Simple, direct image replacement script
         document.addEventListener('DOMContentLoaded', function() {
-            // GitHub Pages image path
-            const dogeImagePath = 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/doge.jpg';
-            const carImagePath = 'https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/car.jpg';
+            // Direct image replacement - force override any existing styles
             
-            // Fix BOTH circles - main logo circle AND header icon circle
+            console.log('Starting image replacement...');
             
-            // 1. Fix the main logo circle
-            const dogeCircle = document.querySelector('.doge-car');
-            if (dogeCircle) {
-                const img = new Image();
-                img.onload = function() {
-                    console.log('✅ Doge image loaded from GitHub, applying to MAIN circle');
-                    dogeCircle.style.backgroundImage = `url('${dogeImagePath}')`;
-                    dogeCircle.style.backgroundSize = 'cover';
-                    dogeCircle.style.backgroundPosition = 'center';
-                    dogeCircle.style.backgroundRepeat = 'no-repeat';
-                    // Hide the emoji fallback
-                    const fallback = dogeCircle.querySelector('::before');
-                    if (fallback) fallback.style.display = 'none';
-                };
-                img.onerror = function() {
-                    console.log('❌ Doge image failed to load from GitHub in main circle');
-                    console.log('Tried path:', dogeImagePath);
-                };
-                img.src = dogeImagePath;
+            // 1. Replace main circle background
+            const mainCircle = document.querySelector('.doge-car');
+            if (mainCircle) {
+                console.log('Found main circle, replacing...');
+                mainCircle.style.setProperty('background-image', 'url(https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/doge.jpg)', 'important');
+                mainCircle.style.setProperty('background-size', 'cover', 'important');
+                mainCircle.style.setProperty('background-position', 'center', 'important');
+                mainCircle.style.setProperty('background-repeat', 'no-repeat', 'important');
+                
+                // Remove emoji
+                mainCircle.innerHTML = '';
             }
-
-            // 2. Fix the header icon circle
+            
+            // 2. Replace header icon
             const headerIcon = document.querySelector('.doge-icon');
             if (headerIcon) {
-                const img2 = new Image();
-                img2.onload = function() {
-                    console.log('✅ Doge image loaded from GitHub, applying to HEADER circle');
-                    headerIcon.style.backgroundImage = `url('${dogeImagePath}')`;
-                    headerIcon.style.backgroundSize = 'cover';
-                    headerIcon.style.backgroundPosition = 'center';
-                    headerIcon.style.backgroundRepeat = 'no-repeat';
-                    // Hide the emoji that's positioned wrong
-                    const emoji = headerIcon.querySelector('::after');
-                    if (emoji) emoji.style.display = 'none';
-                };
-                img2.onerror = function() {
-                    console.log('❌ Doge image failed to load from GitHub in header circle');
-                    console.log('Tried path:', dogeImagePath);
-                };
-                img2.src = dogeImagePath;
+                console.log('Found header icon, replacing...');
+                headerIcon.style.setProperty('background-image', 'url(https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/doge.jpg)', 'important');
+                headerIcon.style.setProperty('background-size', 'cover', 'important');
+                headerIcon.style.setProperty('background-position', 'center', 'important');
+                headerIcon.style.setProperty('background-repeat', 'no-repeat', 'important');
+                
+                // Remove emoji
+                headerIcon.innerHTML = '';
             }
-
-            // 3. Fix the orbiting car
-            const carOrbit = document.querySelector('.car-orbit');
-            if (carOrbit) {
-                const img3 = new Image();
-                img3.onload = function() {
-                    console.log('✅ Car image loaded from GitHub for orbit');
-                    // Apply car image to the orbiting element via CSS variable
-                    document.documentElement.style.setProperty('--car-image', `url('${carImagePath}')`);
-                };
-                img3.onerror = function() {
-                    console.log('❌ Car orbit image failed to load from GitHub');
-                    console.log('Tried path:', carImagePath);
-                };
-                img3.src = carImagePath;
+            
+            // 3. Create orbiting image element
+            const orbit = document.querySelector('.car-orbit');
+            if (orbit) {
+                console.log('Found orbit, adding car image...');
+                // Remove existing ::after content by creating actual element
+                const orbitImg = document.createElement('div');
+                orbitImg.style.cssText = `
+                    position: absolute;
+                    width: 60px;
+                    height: 60px;
+                    top: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-image: url(https://gwiggs458.github.io/dogewifcar-website/images/images/destinations/car.jpg);
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: 8px;
+                    border: 2px solid rgba(255, 255, 255, 0.8);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    animation: spin 6s linear infinite reverse;
+                `;
+                orbit.appendChild(orbitImg);
             }
-
-            // Also run the emoji replacement for other parts of the site
-            setTimeout(() => {
-                autoReplaceEmojis();
-            }, 1000);
+            
+            console.log('Image replacement complete!');
         });
     </script>
 </body>
