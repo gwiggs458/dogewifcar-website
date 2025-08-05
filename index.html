@@ -178,40 +178,71 @@
             border-radius: 50%;
         }
 
-        .car-orbit {
+        /* USA States Background */
+        .states-background {
             position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 330px;
-            height: 330px;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: spin 6s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .car-orbit-img {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            animation: spin 6s linear infinite reverse;
-            overflow: hidden;
-        }
-
-        .car-orbit-img img {
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .state-name {
+            position: absolute;
+            color: #ffff00;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+            animation: float 15s infinite linear;
+            white-space: nowrap;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100px) rotate(0deg); }
+            100% { transform: translateX(calc(100vw + 100px)) rotate(360deg); }
+        }
+
+        @keyframes floatReverse {
+            0% { transform: translateX(calc(100vw + 100px)) rotate(0deg); }
+            100% { transform: translateX(-100px) rotate(-360deg); }
+        }
+
+        /* Varying sizes and speeds for different states */
+        .state-name:nth-child(odd) {
+            animation-duration: 20s;
+            font-size: 1.1rem;
+        }
+
+        .state-name:nth-child(even) {
+            animation-name: floatReverse;
+            animation-duration: 22s;
+        }
+
+        .state-name:nth-child(3n) {
+            animation-duration: 25s;
+            font-size: 0.8rem;
+            color: #00ff66;
+        }
+
+        .state-name:nth-child(4n) {
+            animation-duration: 18s;
+            font-size: 1rem;
+            color: #ff0066;
+        }
+
+        .state-name:nth-child(5n) {
+            animation-duration: 30s;
+            font-size: 1.2rem;
+        }
+
+        .state-name:nth-child(6n) {
+            animation-name: floatReverse;
+            animation-duration: 28s;
+            font-size: 0.9rem;
         }
 
         .meme-text {
@@ -608,6 +639,60 @@
 
     <!-- Main Content -->
     <div class="main-content">
+        <!-- USA States Background -->
+        <div class="states-background">
+            <div class="state-name" style="top: 10%; animation-delay: 0s;">Alabama</div>
+            <div class="state-name" style="top: 15%; animation-delay: 2s;">Alaska</div>
+            <div class="state-name" style="top: 20%; animation-delay: 4s;">Arizona</div>
+            <div class="state-name" style="top: 25%; animation-delay: 6s;">Arkansas</div>
+            <div class="state-name" style="top: 30%; animation-delay: 8s;">California</div>
+            <div class="state-name" style="top: 35%; animation-delay: 10s;">Colorado</div>
+            <div class="state-name" style="top: 40%; animation-delay: 12s;">Connecticut</div>
+            <div class="state-name" style="top: 45%; animation-delay: 14s;">Delaware</div>
+            <div class="state-name" style="top: 50%; animation-delay: 16s;">Florida</div>
+            <div class="state-name" style="top: 55%; animation-delay: 18s;">Georgia</div>
+            <div class="state-name" style="top: 60%; animation-delay: 20s;">Hawaii</div>
+            <div class="state-name" style="top: 65%; animation-delay: 22s;">Idaho</div>
+            <div class="state-name" style="top: 70%; animation-delay: 24s;">Illinois</div>
+            <div class="state-name" style="top: 75%; animation-delay: 26s;">Indiana</div>
+            <div class="state-name" style="top: 80%; animation-delay: 28s;">Iowa</div>
+            <div class="state-name" style="top: 85%; animation-delay: 30s;">Kansas</div>
+            <div class="state-name" style="top: 90%; animation-delay: 32s;">Kentucky</div>
+            <div class="state-name" style="top: 12%; animation-delay: 34s;">Louisiana</div>
+            <div class="state-name" style="top: 17%; animation-delay: 36s;">Maine</div>
+            <div class="state-name" style="top: 22%; animation-delay: 38s;">Maryland</div>
+            <div class="state-name" style="top: 27%; animation-delay: 40s;">Massachusetts</div>
+            <div class="state-name" style="top: 32%; animation-delay: 42s;">Michigan</div>
+            <div class="state-name" style="top: 37%; animation-delay: 44s;">Minnesota</div>
+            <div class="state-name" style="top: 42%; animation-delay: 46s;">Mississippi</div>
+            <div class="state-name" style="top: 47%; animation-delay: 48s;">Missouri</div>
+            <div class="state-name" style="top: 52%; animation-delay: 50s;">Montana</div>
+            <div class="state-name" style="top: 57%; animation-delay: 52s;">Nebraska</div>
+            <div class="state-name" style="top: 62%; animation-delay: 54s;">Nevada</div>
+            <div class="state-name" style="top: 67%; animation-delay: 56s;">New Hampshire</div>
+            <div class="state-name" style="top: 72%; animation-delay: 58s;">New Jersey</div>
+            <div class="state-name" style="top: 77%; animation-delay: 60s;">New Mexico</div>
+            <div class="state-name" style="top: 82%; animation-delay: 62s;">New York</div>
+            <div class="state-name" style="top: 87%; animation-delay: 64s;">North Carolina</div>
+            <div class="state-name" style="top: 14%; animation-delay: 66s;">North Dakota</div>
+            <div class="state-name" style="top: 19%; animation-delay: 68s;">Ohio</div>
+            <div class="state-name" style="top: 24%; animation-delay: 70s;">Oklahoma</div>
+            <div class="state-name" style="top: 29%; animation-delay: 72s;">Oregon</div>
+            <div class="state-name" style="top: 34%; animation-delay: 74s;">Pennsylvania</div>
+            <div class="state-name" style="top: 39%; animation-delay: 76s;">Rhode Island</div>
+            <div class="state-name" style="top: 44%; animation-delay: 78s;">South Carolina</div>
+            <div class="state-name" style="top: 49%; animation-delay: 80s;">South Dakota</div>
+            <div class="state-name" style="top: 54%; animation-delay: 82s;">Tennessee</div>
+            <div class="state-name" style="top: 59%; animation-delay: 84s;">Texas</div>
+            <div class="state-name" style="top: 64%; animation-delay: 86s;">Utah</div>
+            <div class="state-name" style="top: 69%; animation-delay: 88s;">Vermont</div>
+            <div class="state-name" style="top: 74%; animation-delay: 90s;">Virginia</div>
+            <div class="state-name" style="top: 79%; animation-delay: 92s;">Washington</div>
+            <div class="state-name" style="top: 84%; animation-delay: 94s;">West Virginia</div>
+            <div class="state-name" style="top: 89%; animation-delay: 96s;">Wisconsin</div>
+            <div class="state-name" style="top: 16%; animation-delay: 98s;">Wyoming</div>
+        </div>
+
         <section id="home">
             <h1 class="page-title fade-in">
                 <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #ff0066, #ffff00); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: #000; overflow: hidden;">
@@ -621,11 +706,6 @@
             <div class="doge-car-container fade-in">
                 <div class="doge-car">
                     <img src="https://gwiggs458.github.io/dogewifcar-website/images/destinations/doge.jpg" alt="Dogewifcar" onerror="this.style.display='none'; this.parentNode.innerHTML='🐕';">
-                    <div class="car-orbit">
-                        <div class="car-orbit-img">
-                            <img src="https://gwiggs458.github.io/dogewifcar-website/images/destinations/car.jpg" alt="Car" onerror="this.style.display='none'; this.parentNode.innerHTML='🚗';">
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -759,10 +839,9 @@
                 });
             }
             
-            // Apply image replacements
+            // Apply image replacements (removed car orbit references)
             replaceImage('.doge-icon img', imageReplacements.dogeImage, 'DOGE');
             replaceImage('.doge-car img', imageReplacements.dogeImage, '🐕');
-            replaceImage('.car-orbit-img img', imageReplacements.carImage, '🚗');
             
             console.log('All image replacements applied!');
         });
