@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+.destination-states {
+            color: #ff0066;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -150,34 +154,6 @@
             text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
         }
 
-        /* Doge Car Animation */
-        .doge-car-container {
-            display: flex;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .doge-car {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #ff0066, #330066);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border: 4px solid #ffff00;
-            box-shadow: 0 20px 40px rgba(255, 0, 102, 0.4);
-            overflow: hidden;
-        }
-
-        .doge-car img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
         /* USA States Background */
         .states-background {
             position: absolute;
@@ -211,7 +187,6 @@
             100% { transform: translateX(-100px) rotate(-360deg); }
         }
 
-        /* Varying sizes and speeds for different states */
         .state-name:nth-child(odd) {
             animation-duration: 20s;
             font-size: 1.1rem;
@@ -243,6 +218,34 @@
             animation-name: floatReverse;
             animation-duration: 28s;
             font-size: 0.9rem;
+        }
+
+        /* Doge Car Animation */
+        .doge-car-container {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .doge-car {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff0066, #330066);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 4px solid #ffff00;
+            box-shadow: 0 20px 40px rgba(255, 0, 102, 0.4);
+            overflow: hidden;
+        }
+
+        .doge-car img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .meme-text {
@@ -385,6 +388,163 @@
             font-size: 1.2em;
         }
 
+        /* Route Map Styles */
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .destination-spot {
+            background: rgba(255, 0, 102, 0.1);
+            border: 2px solid #ff0066;
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .destination-spot:hover {
+            transform: translateY(-5px);
+            border-color: #ffff00;
+            box-shadow: 0 10px 20px rgba(255, 0, 102, 0.3);
+        }
+
+        .destination-spot h3 {
+            color: #ffff00;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .destination-spot p {
+            color: #E8F5E8;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .destination-spot.lunar-highway {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(75, 0, 130, 0.2));
+            border: 2px solid #8a2be2;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+        }
+
+        .destination-spot.lunar-highway:hover {
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.6);
+        }
+
+        .destination-spot.lunar-highway h3 {
+            color: #ffd700;
+        }
+
+        .destination-spot.lunar-highway .destination-states {
+            color: #dda0dd;
+        }
+
+        /* Travel Log Styles */
+        .milestones-timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .milestones-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #ff0066, #ffff00, #00ff66);
+        }
+
+        .milestone {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .milestone.completed {
+            opacity: 1;
+        }
+
+        .milestone.in-progress {
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+        }
+
+        .milestone-icon {
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #ff0066, #ffff00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 3px solid #fff;
+        }
+
+        .milestone-content h3 {
+            color: #ffff00;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .milestone-content p {
+            color: #E8F5E8;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .milestone-date {
+            color: #ff0066;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Community Styles */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .community-card {
+            background: rgba(0, 255, 102, 0.1);
+            border: 2px solid #00ff66;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .community-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffff00;
+            box-shadow: 0 10px 20px rgba(0, 255, 102, 0.3);
+        }
+
+        .community-card h3 {
+            color: #00ff66;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .community-card p {
+            color: #E8F5E8;
+            line-height: 1.5;
+        }
+
         /* Token Info Grid */
         .token-info {
             display: grid;
@@ -456,21 +616,6 @@
             font-size: 1.1em;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(255, 0, 102, 0.5);
@@ -529,6 +674,50 @@
             color: #ff0066;
             font-size: 0.9rem;
             font-style: italic;
+        }
+
+        /* Floating Doge Icons */
+        .floating-doge {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://gwiggs458.github.io/dogewifcar-website/images/destinations/doge.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 2px solid #ffff00;
+            opacity: 0.7;
+            z-index: 500;
+            animation: floatBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-doge.top-left {
+            top: 200px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .floating-doge.top-right {
+            top: 250px;
+            right: 20px;
+            animation-delay: 1s;
+        }
+
+        .floating-doge.bottom-left {
+            bottom: 100px;
+            left: 30px;
+            animation-delay: 2s;
+        }
+
+        .floating-doge.bottom-right {
+            bottom: 150px;
+            right: 30px;
+            animation-delay: 1.5s;
         }
 
         /* Mobile Responsive */
@@ -594,16 +783,13 @@
                 height: 250px;
             }
 
-            .car-orbit {
-                width: 280px;
-                height: 280px;
-                top: -15px;
-                left: -15px;
-            }
-
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .floating-doge {
+                display: none;
             }
         }
 
@@ -619,6 +805,12 @@
     </style>
 </head>
 <body>
+    <!-- Floating Doge Icons -->
+    <div class="floating-doge top-left"></div>
+    <div class="floating-doge top-right"></div>
+    <div class="floating-doge bottom-left"></div>
+    <div class="floating-doge bottom-right"></div>
+
     <!-- Header -->
     <header class="header">
         <nav class="nav">
@@ -631,7 +823,9 @@
             <div class="nav-links">
                 <a href="#home" class="active">🏠 HOME</a>
                 <a href="#adventure">🚗 ADVENTURE</a>
-                <a href="#tokenomics">💎 TOKENOMICS</a>
+                <a href="#route-map">🗺️ ROUTE MAP</a>
+                <a href="#travel-log">📖 TRAVEL LOG</a>
+                <a href="#gas-station">⛽ GAS STATION</a>
                 <a href="#community">🌟 COMMUNITY</a>
             </div>
         </nav>
@@ -641,52 +835,6 @@
     <div class="main-content">
         <!-- USA States Background -->
         <div class="states-background">
-            <div class="state-name" style="top: 10%; animation-delay: 0s;">Alabama</div>
-            <div class="state-name" style="top: 15%; animation-delay: 2s;">Alaska</div>
-            <div class="state-name" style="top: 20%; animation-delay: 4s;">Arizona</div>
-            <div class="state-name" style="top: 25%; animation-delay: 6s;">Arkansas</div>
-            <div class="state-name" style="top: 30%; animation-delay: 8s;">California</div>
-            <div class="state-name" style="top: 35%; animation-delay: 10s;">Colorado</div>
-            <div class="state-name" style="top: 40%; animation-delay: 12s;">Connecticut</div>
-            <div class="state-name" style="top: 45%; animation-delay: 14s;">Delaware</div>
-            <div class="state-name" style="top: 50%; animation-delay: 16s;">Florida</div>
-            <div class="state-name" style="top: 55%; animation-delay: 18s;">Georgia</div>
-            <div class="state-name" style="top: 60%; animation-delay: 20s;">Hawaii</div>
-            <div class="state-name" style="top: 65%; animation-delay: 22s;">Idaho</div>
-            <div class="state-name" style="top: 70%; animation-delay: 24s;">Illinois</div>
-            <div class="state-name" style="top: 75%; animation-delay: 26s;">Indiana</div>
-            <div class="state-name" style="top: 80%; animation-delay: 28s;">Iowa</div>
-            <div class="state-name" style="top: 85%; animation-delay: 30s;">Kansas</div>
-            <div class="state-name" style="top: 90%; animation-delay: 32s;">Kentucky</div>
-            <div class="state-name" style="top: 12%; animation-delay: 34s;">Louisiana</div>
-            <div class="state-name" style="top: 17%; animation-delay: 36s;">Maine</div>
-            <div class="state-name" style="top: 22%; animation-delay: 38s;">Maryland</div>
-            <div class="state-name" style="top: 27%; animation-delay: 40s;">Massachusetts</div>
-            <div class="state-name" style="top: 32%; animation-delay: 42s;">Michigan</div>
-            <div class="state-name" style="top: 37%; animation-delay: 44s;">Minnesota</div>
-            <div class="state-name" style="top: 42%; animation-delay: 46s;">Mississippi</div>
-            <div class="state-name" style="top: 47%; animation-delay: 48s;">Missouri</div>
-            <div class="state-name" style="top: 52%; animation-delay: 50s;">Montana</div>
-            <div class="state-name" style="top: 57%; animation-delay: 52s;">Nebraska</div>
-            <div class="state-name" style="top: 62%; animation-delay: 54s;">Nevada</div>
-            <div class="state-name" style="top: 67%; animation-delay: 56s;">New Hampshire</div>
-            <div class="state-name" style="top: 72%; animation-delay: 58s;">New Jersey</div>
-            <div class="state-name" style="top: 77%; animation-delay: 60s;">New Mexico</div>
-            <div class="state-name" style="top: 82%; animation-delay: 62s;">New York</div>
-            <div class="state-name" style="top: 87%; animation-delay: 64s;">North Carolina</div>
-            <div class="state-name" style="top: 14%; animation-delay: 66s;">North Dakota</div>
-            <div class="state-name" style="top: 19%; animation-delay: 68s;">Ohio</div>
-            <div class="state-name" style="top: 24%; animation-delay: 70s;">Oklahoma</div>
-            <div class="state-name" style="top: 29%; animation-delay: 72s;">Oregon</div>
-            <div class="state-name" style="top: 34%; animation-delay: 74s;">Pennsylvania</div>
-            <div class="state-name" style="top: 39%; animation-delay: 76s;">Rhode Island</div>
-            <div class="state-name" style="top: 44%; animation-delay: 78s;">South Carolina</div>
-            <div class="state-name" style="top: 49%; animation-delay: 80s;">South Dakota</div>
-            <div class="state-name" style="top: 54%; animation-delay: 82s;">Tennessee</div>
-            <div class="state-name" style="top: 59%; animation-delay: 84s;">Texas</div>
-            <div class="state-name" style="top: 64%; animation-delay: 86s;">Utah</div>
-            <div class="state-name" style="top: 69%; animation-delay: 88s;">Vermont</div>
-            <div class="state-name" style="top: 74%; animation-delay: 90s;">Virginia</div>
             <div class="state-name" style="top: 79%; animation-delay: 92s;">Washington</div>
             <div class="state-name" style="top: 84%; animation-delay: 94s;">West Virginia</div>
             <div class="state-name" style="top: 89%; animation-delay: 96s;">Wisconsin</div>
@@ -701,7 +849,7 @@
                 DOGEWIFCAR
             </h1>
             <p class="page-subtitle fade-in">🚗 The Adventures of Dogewifcar</p>
-            <p class="blockchain-badge fade-in">⚡ Much Adventure, Very Fast, Such Meme Power ⚡</p>
+            <p class="blockchain-badge fade-in">⚡ Much Adventure, Very Fast, Next Stop: MOON! 🚀</p>
 
             <div class="doge-car-container fade-in">
                 <div class="doge-car">
@@ -709,11 +857,11 @@
                 </div>
             </div>
 
-            <p class="meme-text fade-in">Such Speed! Much Vroom! Very Adventure!</p>
+            <p class="meme-text fade-in">Such Speed! Much Vroom! To The Moon! 🚀</p>
 
             <div class="cta-buttons fade-in">
-                <a href="#tokenomics" class="cta-button">🚀 Join Adventure</a>
-                <a href="#adventure" class="cta-button secondary">📖 Read Story</a>
+                <a href="#gas-station" class="cta-button">🚀 Rocket Fuel</a>
+                <a href="#route-map" class="cta-button secondary">🌙 Plan Moon Route</a>
             </div>
         </section>
 
@@ -740,46 +888,207 @@
             <h3><span class="chapter-icon">🎭</span>Chapter 5: The Meme Revolution</h3>
             <p>Of course, no Doge adventure would be complete without memes. From "much vroom" to "very fast," the internet quickly embraced Doge's new persona as the ultimate driving dog. Memes featuring Doge in his car spread like wildfire across social media, bringing joy and laughter to millions. The "dogewifcar" phenomenon was born, capturing hearts and creating a community united by humor and adventure.</p>
 
+            <h3><span class="chapter-icon">🚀</span>Chapter 6: Destination Moon</h3>
+            <p>As Doge's fame grew, so did his ambitions. "Why stop at 50 states?" he thought, looking up at the night sky. "To the moon!" became his new battle cry. With diamond paws gripping the wheel and HODL determination in his heart, Doge began planning the ultimate adventure - a cosmic road trip to the moon itself. Such ambitious! Very space! Much wow!</p>
+
             <div class="adventure-box">
                 <strong>🎬 THE ADVENTURE CONTINUES...</strong><br><br>
-                <strong>This is just the beginning of Doge's epic journey. Every day brings new roads to explore, new friends to meet, and new memes to create. Buckle up and join the ride!</strong>
+                <strong>This is just the beginning of Doge's epic journey. From 50 states to the moon itself - every day brings new roads to explore, new friends to meet, and new memes to create. Diamond paws on the wheel, eyes on the stars! 🚀</strong>
             </div>
         </section>
 
-        <section id="tokenomics" class="content-section fade-in">
-            <h2>💎 TOKENOMICS</h2>
+        <section id="route-map" class="content-section fade-in">
+            <h2>🗺️ Adventure Route Map</h2>
+            
+            <div class="wow-box">
+                <strong>🌎 EPIC DESTINATIONS AWAIT!</strong><br><br>
+                <strong>Explore where Dogewifcar's adventures could take you - from sea to shining sea, and beyond to the moon! 🚀</strong>
+            </div>
+
+            <div class="destination-grid">
+                <div class="destination-spot" onclick="visitDestination('west-coast')">
+                    <h3>🌊 West Coast Cruise</h3>
+                    <p>From sunny California beaches to Seattle's coffee shops - such coastal vibes!</p>
+                    <div class="destination-states">California • Oregon • Washington</div>
+                </div>
+                
+                <div class="destination-spot" onclick="visitDestination('southwest')">
+                    <h3>🌵 Southwest Adventure</h3>
+                    <p>Desert highways and canyon views - much scenery, very wow!</p>
+                    <div class="destination-states">Arizona • New Mexico • Nevada • Utah</div>
+                </div>
+                
+                <div class="destination-spot" onclick="visitDestination('great-lakes')">
+                    <h3>🏞️ Great Lakes Tour</h3>
+                    <p>Lakeside drives and autumn colors - such beauty, very peaceful!</p>
+                    <div class="destination-states">Michigan • Minnesota • Wisconsin • Illinois</div>
+                </div>
+                
+                <div class="destination-spot" onclick="visitDestination('southern-charm')">
+                    <h3>🎸 Southern Charm Route</h3>
+                    <p>BBQ, music, and hospitality - much flavor, very friendly!</p>
+                    <div class="destination-states">Texas • Louisiana • Tennessee • Georgia</div>
+                </div>
+                
+                <div class="destination-spot" onclick="visitDestination('northeast')">
+                    <h3>🍂 Northeast Explorer</h3>
+                    <p>Historic cities and fall foliage - such history, very culture!</p>
+                    <div class="destination-states">New York • Massachusetts • Maine • Vermont</div>
+                </div>
+                
+                <div class="destination-spot" onclick="visitDestination('mountain-west')">
+                    <h3>⛰️ Mountain West</h3>
+                    <p>Peaks, valleys, and endless sky - much elevation, very breathtaking!</p>
+                    <div class="destination-states">Colorado • Montana • Wyoming • Idaho</div>
+                </div>
+                
+                <div class="destination-spot lunar-highway" onclick="visitDestination('lunar-highway')">
+                    <h3>🚀 Lunar Highway</h3>
+                    <p>The ultimate destination - to the moon and beyond! Much space, very cosmic!</p>
+                    <div class="destination-states">🌙 Moon • 🪐 Saturn • ✨ Stars • 🌌 Universe</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="travel-log" class="content-section fade-in">
+            <h2>📖 Doge's Travel Log</h2>
+            
+            <div class="adventure-box">
+                <strong>🎯 MILESTONE TRACKER!</strong><br><br>
+                <strong>Follow Doge's epic journey milestones and achievements!</strong>
+            </div>
+
+            <div class="milestones-timeline">
+                <div class="milestone completed">
+                    <div class="milestone-icon">🚗</div>
+                    <div class="milestone-content">
+                        <h3>Got the Car!</h3>
+                        <p>Doge found his perfect adventure vehicle - ready to hit the road!</p>
+                        <span class="milestone-date">Chapter 1 Complete</span>
+                    </div>
+                </div>
+                
+                <div class="milestone completed">
+                    <div class="milestone-icon">🌅</div>
+                    <div class="milestone-content">
+                        <h3>First Road Trip</h3>
+                        <p>Packed snacks, grabbed sunglasses, and hit the highway - such excitement!</p>
+                        <span class="milestone-date">Chapter 2 Complete</span>
+                    </div>
+                </div>
+                
+                <div class="milestone completed">
+                    <div class="milestone-icon">🛣️</div>
+                    <div class="milestone-content">
+                        <h3>Highway Master</h3>
+                        <p>Learned to cruise with style and made friends along the way!</p>
+                        <span class="milestone-date">Chapter 3 Complete</span>
+                    </div>
+                </div>
+                
+                <div class="milestone completed">
+                    <div class="milestone-icon">⛽</div>
+                    <div class="milestone-content">
+                        <h3>Legendary Pit Stop</h3>
+                        <p>Made a squirrel friend and discovered the power of teamwork!</p>
+                        <span class="milestone-date">Chapter 4 Complete</span>
+                    </div>
+                </div>
+                
+                <div class="milestone in-progress">
+                    <div class="milestone-icon">🎭</div>
+                    <div class="milestone-content">
+                        <h3>Meme Legend Status</h3>
+                        <p>Becoming the ultimate driving dog meme - much viral, very famous!</p>
+                        <span class="milestone-date">Chapter 5 Complete</span>
+                    </div>
+                </div>
+                
+                <div class="milestone in-progress">
+                    <div class="milestone-icon">🚀</div>
+                    <div class="milestone-content">
+                        <h3>Moon Mission Prep</h3>
+                        <p>Diamond paws ready, rocket fuel loaded - preparing for the ultimate adventure!</p>
+                        <span class="milestone-date">Chapter 6 In Progress</span>
+                    </div>
+                </div>
+                
+                <div class="milestone upcoming">
+                    <div class="milestone-icon">🌙</div>
+                    <div class="milestone-content">
+                        <h3>TO THE MOON!</h3>
+                        <p>The ultimate crypto achievement - Doge reaches the moon! Such cosmic! Very wow!</p>
+                        <span class="milestone-date">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gas-station" class="content-section fade-in">
+            <h2>⛽ Gas Station</h2>
             
             <div class="tokenomics-box">
-                <strong>🚀 DOGEWIFCAR TOKEN SPECIFICATIONS</strong><br><br>
-                <strong>Built for the community, powered by memes, driven by adventure!</strong>
+                <strong>🚀 ROCKET FUEL FOR THE MOON MISSION!</strong><br><br>
+                <strong>Everything you need to join Doge's epic journey to the stars!</strong>
             </div>
 
             <div class="token-info">
                 <div class="token-card">
-                    <h3>💎 Total Supply</h3>
+                    <h3>🚀 Rocket Fuel Supply</h3>
                     <p style="font-size: 2em; margin: 20px 0; color: #ffff00;">1,000,000,000,000</p>
-                    <p>One trillion tokens for maximum meme potential!</p>
+                    <p>One trillion tokens of pure moon-bound rocket fuel!</p>
                 </div>
                 <div class="token-card">
-                    <h3>🔥 Distribution</h3>
-                    <p>✅ Fair launch with no team allocation</p>
-                    <p>✅ Community-driven project</p>
-                    <p>✅ Liquidity locked forever</p>
-                    <p>✅ No hidden surprises</p>
+                    <h3>🌙 Mission Planning</h3>
+                    <p>✅ Fair launch - no shortcuts to the moon</p>
+                    <p>✅ Community-driven space mission</p>
+                    <p>✅ Liquidity locked for the cosmic journey</p>
+                    <p>✅ Diamond paws, no paper hands</p>
                 </div>
                 <div class="token-card">
-                    <h3>🎯 Utility</h3>
+                    <h3>💎 HODL Perks</h3>
                     <p>🎭 Meme power activated</p>
-                    <p>🗳️ Community governance</p>
-                    <p>🚗 Adventure fund contributions</p>
-                    <p>🌟 Exclusive community access</p>
+                    <p>🗳️ Community space navigation</p>
+                    <p>🚀 Moon mission fund contributions</p>
+                    <p>🌟 VIP astronaut access</p>
                 </div>
             </div>
             
             <div class="contract-address" onclick="copyContract()">
-                <strong>📋 Contract Address:</strong><br>
+                <strong>🚀 Spacecraft Registration:</strong><br>
                 0x0073c4DBA04d32896c433DEB75Dd39eFe63baeb9
-                <br><small>👆 Click to copy to clipboard</small>
+                <br><small>👆 Click to copy moon mission registration</small>
+            </div>
+        </section>
+
+        <section id="community" class="content-section fade-in">
+            <h2>🌟 Travel Community</h2>
+            
+            <div class="wow-box">
+                <strong>🤝 JOIN THE ADVENTURE COMMUNITY!</strong><br><br>
+                <strong>Connect with fellow travelers and share your Dogewifcar journey!</strong>
+            </div>
+
+            <div class="community-grid">
+                <div class="community-card">
+                    <h3>🐦 Twitter Updates</h3>
+                    <p>Follow daily adventure updates and community highlights</p>
+                </div>
+                
+                <div class="community-card">
+                    <h3>💬 Telegram Chat</h3>
+                    <p>Real-time chat with fellow adventurers and road trip tips</p>
+                </div>
+                
+                <div class="community-card">
+                    <h3>🎮 Discord Community</h3>
+                    <p>Join themed channels for different adventure routes</p>
+                </div>
+                
+                <div class="community-card">
+                    <h3>📱 Reddit Stories</h3>
+                    <p>Share your own Dogewifcar memes and travel stories</p>
+                </div>
             </div>
         </section>
     </div>
@@ -789,7 +1098,9 @@
         <div class="footer-links">
             <a href="#home">🏠 Home</a>
             <a href="#adventure">🚗 Adventure</a>
-            <a href="#tokenomics">💎 Tokenomics</a>
+            <a href="#route-map">🗺️ Route Map</a>
+            <a href="#travel-log">📖 Travel Log</a>
+            <a href="#gas-station">⛽ Gas Station</a>
             <a href="#community">🌟 Community</a>
             <a href="#terms">📜 Terms</a>
         </div>
@@ -813,17 +1124,14 @@
     </footer>
 
     <script>
-        // Image replacement system using the same approach as Meme Fight Club
+        // Image replacement system
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Dogewifcar image replacement system loaded!');
             
-            // Define image paths
             const imageReplacements = {
-                dogeImage: 'https://gwiggs458.github.io/dogewifcar-website/images/destinations/doge.jpg',
-                carImage: 'https://gwiggs458.github.io/dogewifcar-website/images/destinations/car.jpg'
+                dogeImage: 'https://gwiggs458.github.io/dogewifcar-website/images/destinations/doge.jpg'
             };
             
-            // Replace images with error handling
             function replaceImage(selector, imagePath, fallbackContent) {
                 const elements = document.querySelectorAll(selector);
                 elements.forEach(element => {
@@ -839,17 +1147,30 @@
                 });
             }
             
-            // Apply image replacements (removed car orbit references)
             replaceImage('.doge-icon img', imageReplacements.dogeImage, 'DOGE');
             replaceImage('.doge-car img', imageReplacements.dogeImage, '🐕');
             
             console.log('All image replacements applied!');
         });
 
+        function visitDestination(destination) {
+            const destinations = {
+                'west-coast': 'Doge is cruising the Pacific Coast Highway! 🌊 Such ocean views!',
+                'southwest': 'Doge is exploring desert canyons! 🌵 Much wilderness!',
+                'great-lakes': 'Doge is touring the Great Lakes! 🏞️ Very refreshing!',
+                'southern-charm': 'Doge is enjoying Southern hospitality! 🎸 Such flavor!',
+                'northeast': 'Doge is discovering historic cities! 🍂 Much culture!',
+                'mountain-west': 'Doge is climbing mountain roads! ⛰️ Very elevation!',
+                'lunar-highway': 'TO THE MOON! 🚀 Doge has activated rocket boosters! Much cosmic! Very space! Such wow!'
+            };
+            
+            alert(destinations[destination] || 'Such adventure awaits!');
+        }
+
         function copyContract() {
             const contractAddress = '0x0073c4DBA04d32896c433DEB75Dd39eFe63baeb9';
             navigator.clipboard.writeText(contractAddress).then(function() {
-                alert('Contract address copied to clipboard! Much convenient! Such copy!');
+                alert('Spacecraft registration copied! Ready for moon mission! 🚀');
             });
         }
 
@@ -912,4 +1233,51 @@
         });
     </script>
 </body>
-</html>
+</html>-name" style="top: 10%; animation-delay: 0s;">Alabama</div>
+            <div class="state-name" style="top: 15%; animation-delay: 2s;">Alaska</div>
+            <div class="state-name" style="top: 20%; animation-delay: 4s;">Arizona</div>
+            <div class="state-name" style="top: 25%; animation-delay: 6s;">Arkansas</div>
+            <div class="state-name" style="top: 30%; animation-delay: 8s;">California</div>
+            <div class="state-name" style="top: 35%; animation-delay: 10s;">Colorado</div>
+            <div class="state-name" style="top: 40%; animation-delay: 12s;">Connecticut</div>
+            <div class="state-name" style="top: 45%; animation-delay: 14s;">Delaware</div>
+            <div class="state-name" style="top: 50%; animation-delay: 16s;">Florida</div>
+            <div class="state-name" style="top: 55%; animation-delay: 18s;">Georgia</div>
+            <div class="state-name" style="top: 60%; animation-delay: 20s;">Hawaii</div>
+            <div class="state-name" style="top: 65%; animation-delay: 22s;">Idaho</div>
+            <div class="state-name" style="top: 70%; animation-delay: 24s;">Illinois</div>
+            <div class="state-name" style="top: 75%; animation-delay: 26s;">Indiana</div>
+            <div class="state-name" style="top: 80%; animation-delay: 28s;">Iowa</div>
+            <div class="state-name" style="top: 85%; animation-delay: 30s;">Kansas</div>
+            <div class="state-name" style="top: 90%; animation-delay: 32s;">Kentucky</div>
+            <div class="state-name" style="top: 12%; animation-delay: 34s;">Louisiana</div>
+            <div class="state-name" style="top: 17%; animation-delay: 36s;">Maine</div>
+            <div class="state-name" style="top: 22%; animation-delay: 38s;">Maryland</div>
+            <div class="state-name" style="top: 27%; animation-delay: 40s;">Massachusetts</div>
+            <div class="state-name" style="top: 32%; animation-delay: 42s;">Michigan</div>
+            <div class="state-name" style="top: 37%; animation-delay: 44s;">Minnesota</div>
+            <div class="state-name" style="top: 42%; animation-delay: 46s;">Mississippi</div>
+            <div class="state-name" style="top: 47%; animation-delay: 48s;">Missouri</div>
+            <div class="state-name" style="top: 52%; animation-delay: 50s;">Montana</div>
+            <div class="state-name" style="top: 57%; animation-delay: 52s;">Nebraska</div>
+            <div class="state-name" style="top: 62%; animation-delay: 54s;">Nevada</div>
+            <div class="state-name" style="top: 67%; animation-delay: 56s;">New Hampshire</div>
+            <div class="state-name" style="top: 72%; animation-delay: 58s;">New Jersey</div>
+            <div class="state-name" style="top: 77%; animation-delay: 60s;">New Mexico</div>
+            <div class="state-name" style="top: 82%; animation-delay: 62s;">New York</div>
+            <div class="state-name" style="top: 87%; animation-delay: 64s;">North Carolina</div>
+            <div class="state-name" style="top: 14%; animation-delay: 66s;">North Dakota</div>
+            <div class="state-name" style="top: 19%; animation-delay: 68s;">Ohio</div>
+            <div class="state-name" style="top: 24%; animation-delay: 70s;">Oklahoma</div>
+            <div class="state-name" style="top: 29%; animation-delay: 72s;">Oregon</div>
+            <div class="state-name" style="top: 34%; animation-delay: 74s;">Pennsylvania</div>
+            <div class="state-name" style="top: 39%; animation-delay: 76s;">Rhode Island</div>
+            <div class="state-name" style="top: 44%; animation-delay: 78s;">South Carolina</div>
+            <div class="state-name" style="top: 49%; animation-delay: 80s;">South Dakota</div>
+            <div class="state-name" style="top: 54%; animation-delay: 82s;">Tennessee</div>
+            <div class="state-name" style="top: 59%; animation-delay: 84s;">Texas</div>
+            <div class="state-name" style="top: 64%; animation-delay: 86s;">Utah</div>
+            <div class="state-name" style="top: 69%; animation-delay: 88s;">Vermont</div>
+            <div class="state-name" style="top: 74%; animation-delay: 90s;">Virginia</div>
+            <div class="state-name" style="top: 79%; animation-delay: 92s;">Washington</div>
+            <div class="state
