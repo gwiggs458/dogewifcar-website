@@ -159,7 +159,7 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
-            opacity: 0.1;
+            opacity: 0.3;
             pointer-events: none;
         }
 
@@ -208,12 +208,24 @@
         .state-name:nth-child(5n) {
             animation-duration: 30s;
             font-size: 1.2rem;
+            color: #ffff00;
         }
 
         .state-name:nth-child(6n) {
             animation-name: floatReverse;
             animation-duration: 28s;
             font-size: 0.9rem;
+            color: #ff0066;
+        }
+
+        .state-name:nth-child(7n) {
+            color: #00ff66;
+            font-size: 1.1rem;
+        }
+
+        .state-name:nth-child(8n) {
+            color: #ffff00;
+            animation-duration: 35s;
         }
 
         .destination-states {
@@ -837,56 +849,56 @@
     <div class="main-content">
         <!-- USA States Background -->
         <div class="states-background">
-            <div class="state-name" style="top: 10%; animation-delay: 0s;">Alabama</div>
-            <div class="state-name" style="top: 15%; animation-delay: 2s;">Alaska</div>
-            <div class="state-name" style="top: 20%; animation-delay: 4s;">Arizona</div>
-            <div class="state-name" style="top: 25%; animation-delay: 6s;">Arkansas</div>
-            <div class="state-name" style="top: 30%; animation-delay: 8s;">California</div>
-            <div class="state-name" style="top: 35%; animation-delay: 10s;">Colorado</div>
-            <div class="state-name" style="top: 40%; animation-delay: 12s;">Connecticut</div>
-            <div class="state-name" style="top: 45%; animation-delay: 14s;">Delaware</div>
-            <div class="state-name" style="top: 50%; animation-delay: 16s;">Florida</div>
-            <div class="state-name" style="top: 55%; animation-delay: 18s;">Georgia</div>
-            <div class="state-name" style="top: 60%; animation-delay: 20s;">Hawaii</div>
-            <div class="state-name" style="top: 65%; animation-delay: 22s;">Idaho</div>
-            <div class="state-name" style="top: 70%; animation-delay: 24s;">Illinois</div>
-            <div class="state-name" style="top: 75%; animation-delay: 26s;">Indiana</div>
-            <div class="state-name" style="top: 80%; animation-delay: 28s;">Iowa</div>
-            <div class="state-name" style="top: 85%; animation-delay: 30s;">Kansas</div>
-            <div class="state-name" style="top: 90%; animation-delay: 32s;">Kentucky</div>
-            <div class="state-name" style="top: 12%; animation-delay: 34s;">Louisiana</div>
-            <div class="state-name" style="top: 17%; animation-delay: 36s;">Maine</div>
-            <div class="state-name" style="top: 22%; animation-delay: 38s;">Maryland</div>
-            <div class="state-name" style="top: 27%; animation-delay: 40s;">Massachusetts</div>
-            <div class="state-name" style="top: 32%; animation-delay: 42s;">Michigan</div>
-            <div class="state-name" style="top: 37%; animation-delay: 44s;">Minnesota</div>
-            <div class="state-name" style="top: 42%; animation-delay: 46s;">Mississippi</div>
-            <div class="state-name" style="top: 47%; animation-delay: 48s;">Missouri</div>
-            <div class="state-name" style="top: 52%; animation-delay: 50s;">Montana</div>
-            <div class="state-name" style="top: 57%; animation-delay: 52s;">Nebraska</div>
-            <div class="state-name" style="top: 62%; animation-delay: 54s;">Nevada</div>
-            <div class="state-name" style="top: 67%; animation-delay: 56s;">New Hampshire</div>
-            <div class="state-name" style="top: 72%; animation-delay: 58s;">New Jersey</div>
-            <div class="state-name" style="top: 77%; animation-delay: 60s;">New Mexico</div>
-            <div class="state-name" style="top: 82%; animation-delay: 62s;">New York</div>
-            <div class="state-name" style="top: 87%; animation-delay: 64s;">North Carolina</div>
-            <div class="state-name" style="top: 14%; animation-delay: 66s;">North Dakota</div>
-            <div class="state-name" style="top: 19%; animation-delay: 68s;">Ohio</div>
-            <div class="state-name" style="top: 24%; animation-delay: 70s;">Oklahoma</div>
-            <div class="state-name" style="top: 29%; animation-delay: 72s;">Oregon</div>
-            <div class="state-name" style="top: 34%; animation-delay: 74s;">Pennsylvania</div>
-            <div class="state-name" style="top: 39%; animation-delay: 76s;">Rhode Island</div>
-            <div class="state-name" style="top: 44%; animation-delay: 78s;">South Carolina</div>
-            <div class="state-name" style="top: 49%; animation-delay: 80s;">South Dakota</div>
-            <div class="state-name" style="top: 54%; animation-delay: 82s;">Tennessee</div>
-            <div class="state-name" style="top: 59%; animation-delay: 84s;">Texas</div>
-            <div class="state-name" style="top: 64%; animation-delay: 86s;">Utah</div>
-            <div class="state-name" style="top: 69%; animation-delay: 88s;">Vermont</div>
-            <div class="state-name" style="top: 74%; animation-delay: 90s;">Virginia</div>
-            <div class="state-name" style="top: 79%; animation-delay: 92s;">Washington</div>
-            <div class="state-name" style="top: 84%; animation-delay: 94s;">West Virginia</div>
-            <div class="state-name" style="top: 89%; animation-delay: 96s;">Wisconsin</div>
-            <div class="state-name" style="top: 16%; animation-delay: 98s;">Wyoming</div>
+            <div class="state-name" style="top: 10%; animation-delay: 0s; color: #ffff00;">Alabama</div>
+            <div class="state-name" style="top: 15%; animation-delay: 2s; color: #ff0066;">Alaska</div>
+            <div class="state-name" style="top: 20%; animation-delay: 4s; color: #00ff66;">Arizona</div>
+            <div class="state-name" style="top: 25%; animation-delay: 6s; color: #ff0066;">Arkansas</div>
+            <div class="state-name" style="top: 30%; animation-delay: 8s; color: #ffff00;">California</div>
+            <div class="state-name" style="top: 35%; animation-delay: 10s; color: #ff0066;">Colorado</div>
+            <div class="state-name" style="top: 40%; animation-delay: 12s; color: #00ff66;">Connecticut</div>
+            <div class="state-name" style="top: 45%; animation-delay: 14s; color: #ffff00;">Delaware</div>
+            <div class="state-name" style="top: 50%; animation-delay: 16s; color: #00ff66;">Florida</div>
+            <div class="state-name" style="top: 55%; animation-delay: 18s; color: #ff0066;">Georgia</div>
+            <div class="state-name" style="top: 60%; animation-delay: 20s; color: #ffff00;">Hawaii</div>
+            <div class="state-name" style="top: 65%; animation-delay: 22s; color: #00ff66;">Idaho</div>
+            <div class="state-name" style="top: 70%; animation-delay: 24s; color: #ff0066;">Illinois</div>
+            <div class="state-name" style="top: 75%; animation-delay: 26s; color: #ffff00;">Indiana</div>
+            <div class="state-name" style="top: 80%; animation-delay: 28s; color: #00ff66;">Iowa</div>
+            <div class="state-name" style="top: 85%; animation-delay: 30s; color: #ff0066;">Kansas</div>
+            <div class="state-name" style="top: 90%; animation-delay: 32s; color: #ffff00;">Kentucky</div>
+            <div class="state-name" style="top: 12%; animation-delay: 34s; color: #00ff66;">Louisiana</div>
+            <div class="state-name" style="top: 17%; animation-delay: 36s; color: #ff0066;">Maine</div>
+            <div class="state-name" style="top: 22%; animation-delay: 38s; color: #ffff00;">Maryland</div>
+            <div class="state-name" style="top: 27%; animation-delay: 40s; color: #00ff66;">Massachusetts</div>
+            <div class="state-name" style="top: 32%; animation-delay: 42s; color: #ff0066;">Michigan</div>
+            <div class="state-name" style="top: 37%; animation-delay: 44s; color: #ffff00;">Minnesota</div>
+            <div class="state-name" style="top: 42%; animation-delay: 46s; color: #00ff66;">Mississippi</div>
+            <div class="state-name" style="top: 47%; animation-delay: 48s; color: #ff0066;">Missouri</div>
+            <div class="state-name" style="top: 52%; animation-delay: 50s; color: #ffff00;">Montana</div>
+            <div class="state-name" style="top: 57%; animation-delay: 52s; color: #00ff66;">Nebraska</div>
+            <div class="state-name" style="top: 62%; animation-delay: 54s; color: #ff0066;">Nevada</div>
+            <div class="state-name" style="top: 67%; animation-delay: 56s; color: #ffff00;">New Hampshire</div>
+            <div class="state-name" style="top: 72%; animation-delay: 58s; color: #00ff66;">New Jersey</div>
+            <div class="state-name" style="top: 77%; animation-delay: 60s; color: #ff0066;">New Mexico</div>
+            <div class="state-name" style="top: 82%; animation-delay: 62s; color: #ffff00;">New York</div>
+            <div class="state-name" style="top: 87%; animation-delay: 64s; color: #00ff66;">North Carolina</div>
+            <div class="state-name" style="top: 14%; animation-delay: 66s; color: #ff0066;">North Dakota</div>
+            <div class="state-name" style="top: 19%; animation-delay: 68s; color: #ffff00;">Ohio</div>
+            <div class="state-name" style="top: 24%; animation-delay: 70s; color: #00ff66;">Oklahoma</div>
+            <div class="state-name" style="top: 29%; animation-delay: 72s; color: #ff0066;">Oregon</div>
+            <div class="state-name" style="top: 34%; animation-delay: 74s; color: #ffff00;">Pennsylvania</div>
+            <div class="state-name" style="top: 39%; animation-delay: 76s; color: #00ff66;">Rhode Island</div>
+            <div class="state-name" style="top: 44%; animation-delay: 78s; color: #ff0066;">South Carolina</div>
+            <div class="state-name" style="top: 49%; animation-delay: 80s; color: #ffff00;">South Dakota</div>
+            <div class="state-name" style="top: 54%; animation-delay: 82s; color: #00ff66;">Tennessee</div>
+            <div class="state-name" style="top: 59%; animation-delay: 84s; color: #ff0066;">Texas</div>
+            <div class="state-name" style="top: 64%; animation-delay: 86s; color: #ffff00;">Utah</div>
+            <div class="state-name" style="top: 69%; animation-delay: 88s; color: #00ff66;">Vermont</div>
+            <div class="state-name" style="top: 74%; animation-delay: 90s; color: #ff0066;">Virginia</div>
+            <div class="state-name" style="top: 79%; animation-delay: 92s; color: #ffff00;">Washington</div>
+            <div class="state-name" style="top: 84%; animation-delay: 94s; color: #00ff66;">West Virginia</div>
+            <div class="state-name" style="top: 89%; animation-delay: 96s; color: #ff0066;">Wisconsin</div>
+            <div class="state-name" style="top: 16%; animation-delay: 98s; color: #ffff00;">Wyoming</div>
         </div>
 
         <section id="home">
