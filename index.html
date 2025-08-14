@@ -446,6 +446,28 @@
             line-height: 1.5;
         }
 
+        .destination-spot.current-location {
+            background: linear-gradient(135deg, rgba(255, 255, 0, 0.3), rgba(255, 0, 102, 0.2));
+            border: 3px solid #ffff00;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+            animation: currentGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes currentGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 0, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(255, 255, 0, 0.6); }
+        }
+
+        .destination-spot.completed {
+            background: linear-gradient(135deg, rgba(0, 255, 102, 0.3), rgba(255, 255, 0, 0.2));
+            border: 2px solid #00ff66;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+        }
+
+        .destination-spot.completed h3 {
+            color: #00ff66;
+        }
+
         .destination-spot.lunar-highway {
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(75, 0, 130, 0.2));
             border: 2px solid #8a2be2;
@@ -463,6 +485,94 @@
 
         .destination-spot.lunar-highway .destination-states {
             color: #dda0dd;
+        }
+
+        .price-range {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #ffff00;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .price-range .start-price {
+            color: #ffff00;
+        }
+
+        .price-range .end-price {
+            color: #00ff66;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #ff0066, #ffff00, #00ff66);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .achievement-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #00ff66, #ffff00);
+            color: #000;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .destination-spot.completed .achievement-badge {
+            opacity: 1;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .current-location-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #ffff00;
+        }
+
+        .doge-car-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #ff0066, #ffff00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            animation: carBounce 1s ease-in-out infinite;
+        }
+
+        @keyframes carBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         /* Travel Log Styles */
@@ -972,50 +1082,113 @@
             <h2>🗺️ Adventure Route Map</h2>
             
             <div class="wow-box">
-                <strong>🌎 EPIC DESTINATIONS AWAIT!</strong><br><br>
-                <strong>Explore where Dogewifcar's adventures could take you - from sea to shining sea, and beyond to the moon! 🚀</strong>
+                <strong>🗺️ PRICE JOURNEY TO THE MOON!</strong><br><br>
+                <strong>Follow Doge's epic price adventure across America and beyond! Each destination represents a price milestone on our journey to the moon! 🚀</strong><br><br>
+                <div style="text-align: center; margin-top: 15px;" class="current-price-display">
+                    <strong>Current Price: $0.0000000005459 • Next Stop: West Coast! 🌊</strong>
+                </div>
             </div>
 
             <div class="destination-grid">
-                <div class="destination-spot" onclick="visitDestination('west-coast')">
+                <div class="destination-spot current-location" onclick="visitDestination('west-coast')">
+                    <div class="achievement-badge">🚗</div>
                     <h3>🌊 West Coast Cruise</h3>
                     <p>From sunny California beaches to Seattle's coffee shops - such coastal vibes!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.00000001</div>
+                        <div class="end-price">Target: $0.000000025</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 22%;"></div>
+                    </div>
+                    <div class="current-location-indicator">
+                        <div class="doge-car-icon">🚗</div>
+                        <span>DOGE IS HERE! Current: $0.0000000005459</span>
+                    </div>
                     <div class="destination-states">California • Oregon • Washington</div>
                 </div>
                 
                 <div class="destination-spot" onclick="visitDestination('southwest')">
+                    <div class="achievement-badge">🌵</div>
                     <h3>🌵 Southwest Adventure</h3>
                     <p>Desert highways and canyon views - much scenery, very wow!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.000000025</div>
+                        <div class="end-price">Target: $0.00000005</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
                     <div class="destination-states">Arizona • New Mexico • Nevada • Utah</div>
                 </div>
                 
                 <div class="destination-spot" onclick="visitDestination('great-lakes')">
+                    <div class="achievement-badge">🏞️</div>
                     <h3>🏞️ Great Lakes Tour</h3>
                     <p>Lakeside drives and autumn colors - such beauty, very peaceful!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.00000005</div>
+                        <div class="end-price">Target: $0.0000001</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
                     <div class="destination-states">Michigan • Minnesota • Wisconsin • Illinois</div>
                 </div>
                 
                 <div class="destination-spot" onclick="visitDestination('southern-charm')">
+                    <div class="achievement-badge">🎸</div>
                     <h3>🎸 Southern Charm Route</h3>
                     <p>BBQ, music, and hospitality - much flavor, very friendly!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.0000001</div>
+                        <div class="end-price">Target: $0.0000005</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
                     <div class="destination-states">Texas • Louisiana • Tennessee • Georgia</div>
                 </div>
                 
                 <div class="destination-spot" onclick="visitDestination('northeast')">
+                    <div class="achievement-badge">🍂</div>
                     <h3>🍂 Northeast Explorer</h3>
                     <p>Historic cities and fall foliage - such history, very culture!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.0000005</div>
+                        <div class="end-price">Target: $0.000001</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
                     <div class="destination-states">New York • Massachusetts • Maine • Vermont</div>
                 </div>
                 
                 <div class="destination-spot" onclick="visitDestination('mountain-west')">
+                    <div class="achievement-badge">⛰️</div>
                     <h3>⛰️ Mountain West</h3>
                     <p>Peaks, valleys, and endless sky - much elevation, very breathtaking!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.000001</div>
+                        <div class="end-price">Target: $0.00001</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
                     <div class="destination-states">Colorado • Montana • Wyoming • Idaho</div>
                 </div>
                 
                 <div class="destination-spot lunar-highway" onclick="visitDestination('lunar-highway')">
+                    <div class="achievement-badge">🌙</div>
                     <h3>🚀 Lunar Highway</h3>
                     <p>The ultimate destination - to the moon and beyond! Much space, very cosmic!</p>
+                    <div class="price-range">
+                        <div class="start-price">Start: $0.00001</div>
+                        <div class="end-price" style="color: #ffd700;">TARGET MOON: $0.0000613</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
                     <div class="destination-states">🌙 Moon • 🪐 Saturn • ✨ Stars • 🌌 Universe</div>
                 </div>
             </div>
@@ -1316,34 +1489,245 @@
     </footer>
 
     <script>
-        // Image replacement system
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Dogewifcar image replacement system loaded!');
-            
-            const imageReplacements = {
-                dogeImage: 'https://gwiggs458.github.io/dogewifcar-website/images/destinations/doge.jpg'
-            };
-            
-            function replaceImage(selector, imagePath, fallbackContent) {
-                const elements = document.querySelectorAll(selector);
-                elements.forEach(element => {
-                    if (element.tagName === 'IMG') {
-                        element.src = imagePath;
-                        element.onerror = function() {
-                            this.style.display = 'none';
-                            if (this.parentNode) {
-                                this.parentNode.innerHTML = fallbackContent;
-                            }
-                        };
-                    }
-                });
+        // Price tracking system with live updates
+        const priceRanges = [
+            {
+                name: 'west-coast',
+                title: 'West Coast Cruise',
+                start: 0.00000001,
+                end: 0.000000025,
+                icon: '🌊'
+            },
+            {
+                name: 'southwest',
+                title: 'Southwest Adventure', 
+                start: 0.000000025,
+                end: 0.00000005,
+                icon: '🌵'
+            },
+            {
+                name: 'great-lakes',
+                title: 'Great Lakes Tour',
+                start: 0.00000005,
+                end: 0.0000001,
+                icon: '🏞️'
+            },
+            {
+                name: 'southern-charm',
+                title: 'Southern Charm Route',
+                start: 0.0000001,
+                end: 0.0000005,
+                icon: '🎸'
+            },
+            {
+                name: 'northeast',
+                title: 'Northeast Explorer',
+                start: 0.0000005,
+                end: 0.000001,
+                icon: '🍂'
+            },
+            {
+                name: 'mountain-west',
+                title: 'Mountain West',
+                start: 0.000001,
+                end: 0.00001,
+                icon: '⛰️'
+            },
+            {
+                name: 'lunar-highway',
+                title: 'Lunar Highway',
+                start: 0.00001,
+                end: 0.0000613,
+                icon: '🚀'
             }
+        ];
+
+        let currentPrice = 0.0000000005459; // Fallback price
+
+        // Live price fetching from DexTools (with fallback)
+        async function fetchLivePrice() {
+            try {
+                // Note: DexTools doesn't provide direct API access for prices
+                // This is a placeholder for when you have access to price APIs
+                // For now, we'll simulate price updates or you can manually update
+                
+                // Simulated price update (remove this when you have real API)
+                const priceElement = document.querySelector('.current-price-display');
+                if (priceElement) {
+                    // You can manually update this value or connect to a real API
+                    return currentPrice;
+                }
+                
+                return currentPrice;
+            } catch (error) {
+                console.log('Using fallback price');
+                return currentPrice;
+            }
+        }
+
+        // Update price display and progress
+        function updatePriceProgress(price) {
+            currentPrice = price;
             
-            replaceImage('.doge-icon img', imageReplacements.dogeImage, 'DOGE');
-            replaceImage('.doge-car img', imageReplacements.dogeImage, '🐕');
+            // Find current destination
+            let currentDestination = null;
+            let currentIndex = 0;
             
-            console.log('All image replacements applied!');
+            for (let i = 0; i < priceRanges.length; i++) {
+                if (price >= priceRanges[i].start && price < priceRanges[i].end) {
+                    currentDestination = priceRanges[i];
+                    currentIndex = i;
+                    break;
+                } else if (price >= priceRanges[i].end) {
+                    currentIndex = i + 1;
+                }
+            }
+
+            // If price exceeds all ranges, we're at the moon!
+            if (price >= priceRanges[priceRanges.length - 1].end) {
+                currentDestination = priceRanges[priceRanges.length - 1];
+                currentIndex = priceRanges.length - 1;
+            }
+
+            // Update current price display
+            const priceDisplay = document.querySelector('.current-price-display');
+            if (priceDisplay) {
+                priceDisplay.textContent = `Current Price: ${price.toFixed(10)} • Next Stop: ${currentDestination ? currentDestination.title : 'MOON ACHIEVED!'} ${currentDestination ? currentDestination.icon : '🌙'}`;
+            }
+
+            // Update all destination cards
+            priceRanges.forEach((range, index) => {
+                const card = document.querySelector(`[onclick="visitDestination('${range.name}')"]`);
+                if (!card) return;
+
+                // Remove all status classes
+                card.classList.remove('current-location', 'completed');
+                
+                // Calculate progress for this destination
+                let progress = 0;
+                
+                if (price >= range.end) {
+                    // Completed destination
+                    progress = 100;
+                    card.classList.add('completed');
+                } else if (price >= range.start && price < range.end) {
+                    // Current destination
+                    progress = ((price - range.start) / (range.end - range.start)) * 100;
+                    card.classList.add('current-location');
+                    
+                    // Update current location indicator
+                    const indicator = card.querySelector('.current-location-indicator span');
+                    if (indicator) {
+                        indicator.textContent = `DOGE IS HERE! Current: ${price.toFixed(10)}`;
+                    }
+                } else {
+                    // Future destination
+                    progress = 0;
+                }
+
+                // Update progress bar
+                const progressFill = card.querySelector('.progress-fill');
+                if (progressFill) {
+                    progressFill.style.width = `${Math.min(progress, 100)}%`;
+                }
+
+                // Show/hide current location indicator
+                const indicator = card.querySelector('.current-location-indicator');
+                if (indicator) {
+                    indicator.style.display = card.classList.contains('current-location') ? 'flex' : 'none';
+                }
+            });
+
+            // Special handling for moon achievement
+            if (price >= priceRanges[priceRanges.length - 1].end) {
+                // MOON ACHIEVED! 🚀
+                const moonCard = document.querySelector(`[onclick="visitDestination('lunar-highway')"]`);
+                if (moonCard) {
+                    moonCard.style.animation = 'moonAchieved 2s ease-in-out infinite';
+                    const indicator = moonCard.querySelector('.current-location-indicator span');
+                    if (indicator) {
+                        indicator.textContent = '🌙 MOON ACHIEVED! SUCH WOW! 🚀';
+                    }
+                }
+            }
+        }
+
+        // Manual price update function (for easy testing)
+        window.updatePrice = function(newPrice) {
+            currentPrice = newPrice;
+            updatePriceProgress(newPrice);
+            console.log(`Price updated to: ${newPrice}`);
+        };
+
+        // Initialize the system
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add current price display element if it doesn't exist
+            const priceDisplay = document.querySelector('.current-price-display');
+            if (!priceDisplay) {
+                const wowBox = document.querySelector('#route-map .wow-box div[style*="text-align: center"]');
+                if (wowBox) {
+                    wowBox.classList.add('current-price-display');
+                }
+            }
+
+            // Add moon achievement animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes moonAchieved {
+                    0%, 100% { transform: scale(1) rotate(0deg); }
+                    25% { transform: scale(1.05) rotate(1deg); }
+                    75% { transform: scale(1.05) rotate(-1deg); }
+                }
+                
+                .current-location-indicator {
+                    display: none;
+                }
+                
+                .destination-spot.current-location .current-location-indicator {
+                    display: flex;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Initial price update
+            updatePriceProgress(currentPrice);
+
+            // Set up automatic price updates (every 30 seconds)
+            setInterval(async () => {
+                const newPrice = await fetchLivePrice();
+                updatePriceProgress(newPrice);
+            }, 30000);
+
+            console.log('🚀 DWFCR Price Tracking System Initialized!');
+            console.log('💡 To manually update price, use: updatePrice(0.00000001)');
         });
+
+        // Image replacement system
+        console.log('Dogewifcar image replacement system loaded!');
+        
+        const imageReplacements = {
+            dogeImage: 'https://gwiggs458.github.io/dogewifcar-website/images/destinations/doge.jpg'
+        };
+        
+        function replaceImage(selector, imagePath, fallbackContent) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                if (element.tagName === 'IMG') {
+                    element.src = imagePath;
+                    element.onerror = function() {
+                        this.style.display = 'none';
+                        if (this.parentNode) {
+                            this.parentNode.innerHTML = fallbackContent;
+                        }
+                    };
+                }
+            });
+        }
+        
+        replaceImage('.doge-icon img', imageReplacements.dogeImage, 'DOGE');
+        replaceImage('.doge-car img', imageReplacements.dogeImage, '🐕');
+        
+        console.log('All image replacements applied!');
 
         function visitDestination(destination) {
             const destinations = {
